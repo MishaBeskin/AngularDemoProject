@@ -16,7 +16,7 @@
 
   <div class="row">
 
-    <div class="col-sm-8 offset-sm-2">
+    <div class="col-sm-10 offset-sm-1">
 
       <div class="modal-body">
         <form [formGroup]="form">
@@ -40,10 +40,11 @@
           <input  type="number" formControlName="age" class="form-control" placeholder="Enter your age">
 
           </div>
-          <button type="button" class="btn btn-outline-danger"
-          (click)="activeModal.close('Close click')">Close</button>
-          <span>&nbsp;</span>
-          <button class="btn btn-success" (click)="onCreateContact()"  [disabled]="!form.valid">{{ editContact !== null ? 'Save contact' : 'Create contact' }}</button>
+
+          <div class="flex-contianer">
+            <button type="button" class="btn btn-outline-danger" (click)="activeModal.close('Close click')">Close</button>
+            <button class="btn btn-success" (click)="onCreateContact()"  [disabled]="!form.valid">{{ editContact !== null ? 'Save contact' : 'Create contact' }}</button>
+          </div>
         </form>
       </div>
     </div>
