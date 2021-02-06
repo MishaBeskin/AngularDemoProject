@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Contact } from './contact.model';
+import { Contact } from '../../../contact.model';
 import { take, map, tap, delay } from 'rxjs/operators';
 
 

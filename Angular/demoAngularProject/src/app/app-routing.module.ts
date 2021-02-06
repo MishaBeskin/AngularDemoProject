@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ContactCreateComponent } from './contact-create/contact-create.component';
-import { ContactListComponent } from './contact-list/contact-list.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './components/home/home.component';
+
 
 const routes: Routes = [
-  { path: "", pathMatch: "full", redirectTo: "contact-list" },
+  { path: "", pathMatch: "full", redirectTo: "home" },
   { path: "home", component: HomeComponent },
-  { path: "contact-create", component: ContactCreateComponent },
-  { path: "contact-list", component: ContactListComponent }
-];
 
+  {
+    path: 'contact-list',
+    loadChildren: () => import('../app/modules/contacts/contacts.module').then(m => m.ContactsModule),
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

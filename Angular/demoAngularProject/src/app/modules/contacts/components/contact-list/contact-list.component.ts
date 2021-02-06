@@ -2,8 +2,8 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Subscription } from 'rxjs';
 import { ContactCreateComponent } from '../contact-create/contact-create.component';
-import { Contact } from '../contact.model';
-import { DataService } from '../data.service';
+import { Contact } from '../../../../contact.model';
+import { DataService } from '../../services/data.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -17,7 +17,7 @@ export class ContactListComponent implements OnInit, OnDestroy {
   selectedContact: Contact;
   @ViewChild('creatContact') creatContact;
   private modalRef;
-  constructor(private dataService: DataService, private modalService: NgbModal,) { }
+  constructor(private dataService: DataService, private modalService: NgbModal) { }
 
   ngOnInit() {
     this.contactsSub = this.dataService.contacts.subscribe(contacts => {
