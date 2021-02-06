@@ -1,24 +1,26 @@
 <div class="container" style="margin-top: 70px;">
-  <div class="row">
-    <div class="col-12 text-center">
-      <button class="btn btn-outline-success" (click)="creatNewContact()"> Add New User</button>
-    </div>
-  </div>
-  <div class="row">
-    <div *ngFor="let contact of contacts" class="col-xl-3  col-sm-12 mt-3">
-      <!-- START card-->
+  <div class="contact__list row row">
+    <div *ngFor="let contact of contacts" class="contact__list__item col-xl-3  col-sm-12 mt-3">
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">{{contact.name}}</h5>
-          <div>
-            <p class="m-0">{{contact.description}}</p>
-            <small>Email: {{contact.email}}</small>
-          </div>
+          <div class="pt-0">
+            <p class="card-text m-0"><i class="fa fa-phone contact__list__item__colorBage--gray"></i> Phone: {{contact.tell}}</p>
+            <p class="card-text m-0"><i class="fa fa-envelope contact__list__item__colorBage--black"></i> Email: {{contact.email}}</p>
+            <p class="card-text m-0"><i class="fa fa-info contact__list__item__colorBage--blue"></i> {{contact.description}}</p>
+        </div>
           <button class="btn btn-outline-primary mt-2" (click)="edit(contact)"> Edit</button>
           <button class="btn btn-outline-danger btn-sm mt-2 float-right" (click)="delete(contact.id)"> Delete</button>
         </div>
       </div>
+   </div>
   </div>
+  <hr>
+  <div class="row">
+    <div class="flex-contianer mr-3">
+      <button class="btn btn-outline-success" (click)="creatNewContact()"> Add New User</button>
+    </div>
   </div>
 </div>
+
 

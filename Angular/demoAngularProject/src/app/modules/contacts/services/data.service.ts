@@ -13,10 +13,10 @@ export class DataService {
   contactId: string;
 
   private _contacts = new BehaviorSubject<Contact[]>([
-    new Contact("1", "Contact 001", "c001@email.com", "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's standard dummy text ever", 34),
-    new Contact("2", "Contact 002", "c002@email.com", "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's standard dummy text ever", 54),
-    new Contact("3", "Contact 003", "c003@email.com", "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's standard dummy text ever", 24),
-    new Contact("4", "Contact 004", "c004@email.com", "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's standard dummy text ever", 44)
+    new Contact("1", "Contact 001", "c004@email.com", "Tester Short about the contact 1", "052-1234567", 44),
+    new Contact("2", "Contact 002", "c001@email.com", "Tester Short about the contact 2", "052-1234567", 34),
+    new Contact("3", "Contact 003", "c002@email.com", "Tester Short about the contact 3", "052-1234567", 54),
+    new Contact("4", "Contact 004", "c003@email.com", "Tester Short about the contact 4", "052-1234567", 24),
   ]);
 
 
@@ -41,6 +41,7 @@ export class DataService {
     name: string,
     email: string,
     description: string,
+    tell: string,
     age: number
   ) {
     const newContact = new Contact(
@@ -48,6 +49,7 @@ export class DataService {
       name,
       email,
       description,
+      tell,
       age
     );
     return this.contacts.pipe(
@@ -61,7 +63,7 @@ export class DataService {
 
 
 
-  updateContact(contactId: string, name: string, email: string, description: string, age: number) {
+  updateContact(contactId: string, name: string, email: string, description: string, tell: string, age: number) {
     return this.contacts.pipe(
       take(1),
       delay(1000),
@@ -74,6 +76,7 @@ export class DataService {
           name,
           email,
           description,
+          tell,
           age
         );
         this._contacts.next(updatedContacts);

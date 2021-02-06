@@ -31,6 +31,10 @@ export class ContactCreateComponent implements OnInit, OnDestroy {
         updateOn: 'blur',
         validators: [Validators.required, Validators.maxLength(180)]
       }),
+      tell: new FormControl(this.contact ? this.contact.tell : null, {
+        updateOn: 'blur',
+        validators: [Validators.required, Validators.min(1)]
+      }),
       age: new FormControl(this.contact ? this.contact.age : null, {
         updateOn: 'blur',
         validators: [Validators.required, Validators.min(1)]
@@ -47,6 +51,7 @@ export class ContactCreateComponent implements OnInit, OnDestroy {
         this.form.value.name,
         this.form.value.email,
         this.form.value.description,
+        this.form.value.tell,
         this.form.value.age
       ).subscribe(() => {
         this.form.reset();
@@ -58,6 +63,7 @@ export class ContactCreateComponent implements OnInit, OnDestroy {
         this.form.value.name,
         this.form.value.email,
         this.form.value.description,
+        this.form.value.tell,
         this.form.value.age
       ).subscribe(() => {
         this.form.reset();
