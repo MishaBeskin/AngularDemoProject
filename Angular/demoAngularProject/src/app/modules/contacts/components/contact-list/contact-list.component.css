@@ -3,6 +3,19 @@
   margin-left: auto;
 }
 
+.flex-contianer-list {
+  display: flex;
+}
+
+.space-around {
+  justify-content: space-around;
+}
+
+.flex-item {
+  padding: 3px;
+  margin: 3px;
+}
+
 .contact__list{
   background-color: transparent;
   border-radius: 5px;
@@ -15,8 +28,8 @@
   padding-top: 15px;
 }
 .contact__list__item__avatar--big{
-  width: 75px!important;
-  height: 75px!important;
+  width: 100px!important;
+  height: 100px!important;
 }
 .contact__list__item__avatar--small{
   width: 50px!important;
@@ -44,4 +57,23 @@
 
 .contact__list__item__colorBage--blue{
   color:cornflowerblue;
+}
+
+.contact__list__item__colorBage--green{
+  color:#17b271;
+}
+
+.bigButton{
+  font-size: 5em;
+}
+.cursor {
+  cursor: pointer;
+}
+
+.text-small{
+  font-size: 13px;
+}
+
+.width50{
+  max-width:50%;
 }

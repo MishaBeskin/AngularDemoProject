@@ -22,6 +22,12 @@ export class ContactListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.contactsSub = this.dataService.contacts.subscribe(contacts => {
       this.contacts = contacts;
+      //Here I getting cords of each contact by his Address
+      contacts.forEach(element => {
+        this.dataService.getCords(element.address).subscribe(elm => {
+          element.cords = elm;
+        })
+      });
     });
   }
   selectContact(contact) {

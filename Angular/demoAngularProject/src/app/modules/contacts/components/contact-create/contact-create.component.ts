@@ -19,6 +19,10 @@ export class ContactCreateComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.form = new FormGroup({
+      jobTitle: new FormControl(this.contact ? this.contact.jobTitle : null, {
+        updateOn: 'blur',
+        validators: [Validators.required]
+      }),
       name: new FormControl(this.contact ? this.contact.name : null, {
         updateOn: 'blur',
         validators: [Validators.required]
@@ -27,17 +31,17 @@ export class ContactCreateComponent implements OnInit, OnDestroy {
         updateOn: 'blur',
         validators: [Validators.required, Validators.email]
       }),
-      description: new FormControl(this.contact ? this.contact.description : null, {
-        updateOn: 'blur',
-        validators: [Validators.required, Validators.maxLength(180)]
-      }),
       tell: new FormControl(this.contact ? this.contact.tell : null, {
         updateOn: 'blur',
-        validators: [Validators.required, Validators.min(1)]
+        validators: [Validators.required]
       }),
-      age: new FormControl(this.contact ? this.contact.age : null, {
+      company: new FormControl(this.contact ? this.contact.company : null, {
         updateOn: 'blur',
-        validators: [Validators.required, Validators.min(1)]
+        validators: [Validators.required]
+      }),
+      address: new FormControl(this.contact ? this.contact.address : null, {
+        updateOn: 'blur',
+        validators: [Validators.required]
       })
     });
   }
@@ -48,11 +52,12 @@ export class ContactCreateComponent implements OnInit, OnDestroy {
     }
     if (!this.contact) {
       return this.dataService.createContact(
+        this.form.value.jobTitle,
         this.form.value.name,
         this.form.value.email,
-        this.form.value.description,
         this.form.value.tell,
-        this.form.value.age
+        this.form.value.company,
+        this.form.value.address
       ).subscribe(() => {
         this.form.reset();
         this.activeModal.close();
@@ -60,11 +65,12 @@ export class ContactCreateComponent implements OnInit, OnDestroy {
     } else {
       return this.dataService.updateContact(
         this.contact.id,
+        this.form.value.jobTitle,
         this.form.value.name,
         this.form.value.email,
-        this.form.value.description,
         this.form.value.tell,
-        this.form.value.age
+        this.form.value.company,
+        this.form.value.address
       ).subscribe(() => {
         this.form.reset();
         this.activeModal.close();
